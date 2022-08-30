@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage("build") {
         steps {
-          echo 'building my app...'
+           sh 'npm install'
         }
       }
 
@@ -14,11 +14,14 @@ pipeline {
         }
       }
 
-      stage("deploy") {
-        steps {
-         echo 'deploying our app...'
-        }
+      stage('Deploy'){
+      if(env.BRANCH_NAME == 'master'){
+        sh 'docker build -t react-app --no-cache .'
+        sh 'docker tag react-app localhost:5000/react-app'
+        sh 'docker push localhost:5000/react-app'
+        sh 'docker rmi -f react-app localhost:5000/react-app'
       }
+    }
 
    }
 }
