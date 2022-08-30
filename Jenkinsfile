@@ -1,6 +1,7 @@
 pipeline {
    agent any
 
+   tools {nodejs "node18_2"}
    stages {
       stage("npm install") {
         steps {
