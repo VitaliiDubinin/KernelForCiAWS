@@ -4,7 +4,7 @@ pipeline {
    stages {
       stage("npm install") {
         steps {
-            sh npm install --save-dev cross-env
+            sh 'npm install --save-dev cross-env'
             echo 'npm installed'
         }
       }
