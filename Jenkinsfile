@@ -2,23 +2,24 @@ pipeline {
    agent any
 
    stages {
-      stage("build") {
+      stage("npm install") {
         steps {
-          echo 'building my app...'
+            npm install --save-dev cross-env
+            echo 'npm installed'
         }
       }
 
-      stage("test") {
+      stage("run") {
         steps {
-         echo 'testing our app...'
+         echo 'npm run done'
         }
       }
 
-      stage("deploy") {
-        steps {
-         echo 'deploying our app...'
-        }
-      }
+    //   stage("deploy") {
+    //     steps {
+    //      echo 'deploying our app...'
+    //     }
+    //   }
 
    }
 }
